@@ -5,20 +5,24 @@ const manifestPath = path.join(process.cwd(), "public", "uploads", "manifest.jso
 const uploadsDir = path.join(process.cwd(), "public", "uploads");
 
 export function ensureUploadsDir() {
-  if (!fs.existsSync(uploadsDir)) {
-    fs.mkdirSync(uploadsDir, { recursive: true });
+  try {
+    if (!fs.existsSync(uploadsDir)) {
+      fs.mkdirSync(uploadsDir, { recursive: true });
+    }
+  } catch (e) {
+    console.warn("Uploads directory check/creation skipped (expected in read-only environments):", e);
   }
 }
 
 export function readManifest(): Record<string, string> {
-  ensureUploadsDir();
-  if (!fs.existsSync(manifestPath)) {
-    return {};
-  }
   try {
+    ensureUploadsDir();
+    if (!fs.existsSync(manifestPath)) {
+      return {};
+    }
     return JSON.parse(fs.readFileSync(manifestPath, "utf8"));
   } catch (e) {
-    console.error("Error reading manifest", e);
+    console.warn("Manifest reading skipped or failed (expected in read-only environments):", e);
     return {};
   }
 }

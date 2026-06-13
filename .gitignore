@@ -34,3 +34,5 @@ dist-ssr
 # IDE environment directories
 .bin/
 .workspace/
+
+.vercel
