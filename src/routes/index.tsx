@@ -28,7 +28,6 @@ import { SocialProofPopup } from "@/components/landing/SocialProofPopup";
 import { getImageManifest } from "@/lib/api/image.functions";
 import { EditorProvider, useEditor } from "@/components/landing/EditorProvider";
 import { CustomizableImage } from "@/components/landing/CustomizableImage";
-import { ImageEditorController } from "@/components/landing/ImageEditorController";
 
 export const Route = createFileRoute("/")({
   loader: async () => {
@@ -495,7 +494,6 @@ function IndexContent() {
       </div>
 
       <SocialProofPopup />
-      <ImageEditorController />
     </div>
   );
 }
