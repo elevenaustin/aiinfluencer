@@ -37,9 +37,19 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+import { handleCreateOrder, handleVerifyPayment } from "./lib/razorpay.server";
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      if (url.pathname === "/api/create-order") {
+        return await handleCreateOrder(request);
+      }
+      if (url.pathname === "/api/verify-payment") {
+        return await handleVerifyPayment(request);
+      }
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
