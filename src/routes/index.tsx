@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import {
   Check,
@@ -451,6 +451,28 @@ function IndexContent() {
           </div>
         </motion.div>
       </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-border bg-card/20 py-12 text-center text-sm text-muted-foreground">
+        <div className="mx-auto max-w-5xl px-4 flex flex-col items-center gap-6">
+          <div className="font-display font-bold text-lg text-primary tracking-wide">
+            Shinzo Skills
+          </div>
+          <p className="max-w-md text-xs text-muted-foreground/75">
+            Learn to build hyper-realistic AI Influencers, create viral reels, and monetize your content step-by-step from your phone.
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-foreground/80">
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-primary transition-colors">Terms &amp; Conditions</Link>
+            <Link to="/refund-policy" className="hover:text-primary transition-colors">Refund &amp; Cancellation</Link>
+            <Link to="/delivery-policy" className="hover:text-primary transition-colors">Shipping &amp; Delivery</Link>
+            <Link to="/contact" className="hover:text-primary transition-colors">Contact Us</Link>
+          </div>
+          <div className="text-[11px] text-muted-foreground/50 mt-2">
+            © {new Date().getFullYear()} Shinzo Skills Private Limited. All rights reserved.
+          </div>
+        </div>
+      </footer>
 
       {/* footer spacer for sticky bar */}
       <div className="h-24" />
